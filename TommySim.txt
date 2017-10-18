@@ -1,0 +1,5 @@
+﻿1>------ Build started: Project: Objects2Multiple, Configuration: Debug Any CPU ------
+1>C:\Users\lmdew\Desktop\TommySim-master\Objects2Multiple\City.cs(18,15,18,20): warning CS0414: The field 'City.water' is assigned but its value is never used
+1>C:\Users\lmdew\Desktop\TommySim-master\Objects2Multiple\City.cs(15,16,15,22): warning CS0414: The field 'City.castle' is assigned but its value is never used
+1>  Objects2Multiple -> C:\Users\lmdew\Desktop\TommySim-master\Objects2Multiple\bin\Debug\Objects2Multiple.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
