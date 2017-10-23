@@ -12,6 +12,8 @@ namespace Objects2Multiple
         public string name { get; set; }
         static private Random rng = new Random();
 
+        bool berry = false;//this is the program that i changed to match original.
+
         public Person(String name, City homeCity)
         {
             this.name = name;
@@ -33,11 +35,12 @@ namespace Objects2Multiple
             Console.WriteLine("1) Chop Wood");
             Console.WriteLine("2) Get Water");
 			Console.WriteLine("3) Get Food");
-			Console.WriteLine("4) Build a house (Requires 5 wood)");
-            Console.WriteLine("5) Build a well (Gives 1 gallon of water per day -- Requires 6 wood)");
-			Console.WriteLine("6) Build a garden (Gives 1 bushel of food per day -- Requires 3 seeds and 3 water)");
-			Console.WriteLine("7) Scavenge (find random resource)");
-			Console.WriteLine("8) Build a castle (Win Game -- Requires 20 wood)");
+			Console.WriteLine("4) Get Seed");
+            Console.WriteLine("5) Build a house (Requires 5 wood)");
+            Console.WriteLine("6) Build a well (Gives 1 gallon of water per day -- Requires 6 wood)");
+			Console.WriteLine("7) Build a garden (Gives 1 bushel of food per day -- Requires 3 seeds and 3 water)");
+			Console.WriteLine("8) Scavenge (find random resource)");
+			Console.WriteLine("9) Build a castle (Win Game -- Requires 20 wood)");
 
 			string input = Console.ReadLine();
             switch (input)
@@ -51,19 +54,22 @@ namespace Objects2Multiple
 				case "3":
 					FindFood();
 					break;
-				case "4":
-                    BuildHouse();
+                case "4":
+                    FindSeed();
                     break;
                 case "5":
-                    BuildWell();
+                    BuildHouse();
                     break;
                 case "6":
+                    BuildWell();
+                    break;
+                case "7":
                     BuildGarden();
                     break;
-				case "7":
+				case "8":
 					Scavenge();
 					break;
-				case "8":
+				case "9":
 					BuildCastle();
 					break;
 				default:
@@ -75,7 +81,7 @@ namespace Objects2Multiple
 
         public void ChopWood()
         {
-            homeCity.IncreaseWood();
+            homeCity.IncreaseWood(berry);
             homeCity.PrintWood();
             homeCity.Pause();
         }
@@ -85,6 +91,7 @@ namespace Objects2Multiple
             homeCity.PrintWood();
             homeCity.Pause();
         }
+
 
         public void FindWater()
         {
@@ -137,7 +144,38 @@ namespace Objects2Multiple
 			homeCity.Pause();
 		}
 
-		public void BuildHouse()
+
+        //Spoil Food or  Water
+        public void SpoilFoodorWater(int amount)
+        {
+            string[] spoilFoodorWater = new string[] { "water", "food" };
+            Random spoil = new Random();
+            int s = spoil.Next(0, 2);
+            string option = spoilFoodorWater[s];
+
+            switch (option)
+            {
+                case "water":
+                    Console.WriteLine("Oops.. your village water has been infected..");
+                    Console.WriteLine(name + " lost " + amount + " gallons of water");
+                    homeCity.Water -= amount;
+                    homeCity.PrintWater();
+                    homeCity.Pause();
+                    break;
+
+                case "food":
+                    Console.WriteLine("Oops.. your village food has been infected..");
+                    Console.WriteLine(name + " lost " + amount + " bushels of food");
+                    homeCity.Food -= amount;
+                    homeCity.PrintFood();
+                    homeCity.Pause();
+                    break;
+            }
+
+
+        }
+
+        public void BuildHouse()
         {
             homeCity.BuildHouse();
             homeCity.Pause();
@@ -163,7 +201,7 @@ namespace Objects2Multiple
 
 		public void Scavenge()
         {
-            string[] resources = { "wood", "water", "watersource", "food", "foodsource", "nothing","nothing","death", "seed", "seedSource"," disease","barbarians" };
+            string[] resources = { "wood", "water", "food","nothing","death", "seed", "disease","barbarians" };
             int r = rng.Next(resources.Count());
             string choice = resources[r];
             int amount = rng.Next(2, 6);
@@ -194,14 +232,18 @@ namespace Objects2Multiple
 					FindSeed(amount);
 					break;
                 case "disease":
-                    Console.WriteLine(name + " got a " +  choice);
+                    SpoilFoodorWater(amount);
+                    break;
+                case "barbarians":
+                    Console.WriteLine(name + " was attacked by filthy " + choice);
                     Console.WriteLine(name + " died");
                     homeCity.KillPerson(this);
                     break;
-                case "barbarians":
-                    Console.WriteLine(name +" was attacked by " +choice);
-                    Console.WriteLine(name + " died");
-                    homeCity.KillPerson(this);
+                case "berry":
+                    Console.WriteLine(name + " found a magic berry.");
+                    Console.WriteLine("Your supply of wood has doubled!");
+                    berry = true;
+                    homeCity.IncreaseWood(amount, berry);
                     break;
 
                 default:

@@ -63,12 +63,36 @@ namespace Objects2Multiple
 			}
 		}
 
-		public void IncreaseWood()
-		{
-			wood++;
-		}
+        //public void IncreaseWood()
+        //{
+        //	wood++;
+        //}
 
-		public void IncreaseWood(int amount)
+        public void IncreaseWood(bool berry)
+        {
+            if (berry)
+            {
+                wood += 2;
+            }
+            else
+            {
+                wood++;
+            }
+        }
+
+        public void IncreaseWood(int amount, bool berry)
+        {
+            if (berry)
+            {
+                wood += amount * 2;
+            }
+            else
+            {
+                wood += amount;
+            }
+        }
+
+        public void IncreaseWood(int amount)
 		{
 			wood += amount;
 		}
@@ -285,6 +309,7 @@ namespace Objects2Multiple
 							deadVillagers.Add(p);
 						}
 					}
+                    PrintFood();
 					PrintWater();
 					Pause();
 

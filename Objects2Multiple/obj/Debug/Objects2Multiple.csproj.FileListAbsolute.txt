@@ -20,3 +20,9 @@ C:\Users\Tanvi\Documents\Visual Studio 2017\Projects\TommySim-master\Objects2Mul
 C:\Users\Tanvi\Documents\Visual Studio 2017\Projects\TommySim-master\Objects2Multiple\obj\Debug\Objects2Multiple.csprojResolveAssemblyReference.cache
 C:\Users\Tanvi\Documents\Visual Studio 2017\Projects\TommySim-master\Objects2Multiple\obj\Debug\Objects2Multiple.exe
 C:\Users\Tanvi\Documents\Visual Studio 2017\Projects\TommySim-master\Objects2Multiple\obj\Debug\Objects2Multiple.pdb
+C:\Users\Tanvi\Desktop\Mini-Project\MidTermMini-Project\Objects2Multiple\bin\Debug\Objects2Multiple.exe.config
+C:\Users\Tanvi\Desktop\Mini-Project\MidTermMini-Project\Objects2Multiple\bin\Debug\Objects2Multiple.exe
+C:\Users\Tanvi\Desktop\Mini-Project\MidTermMini-Project\Objects2Multiple\bin\Debug\Objects2Multiple.pdb
+C:\Users\Tanvi\Desktop\Mini-Project\MidTermMini-Project\Objects2Multiple\obj\Debug\Objects2Multiple.csprojResolveAssemblyReference.cache
+C:\Users\Tanvi\Desktop\Mini-Project\MidTermMini-Project\Objects2Multiple\obj\Debug\Objects2Multiple.exe
+C:\Users\Tanvi\Desktop\Mini-Project\MidTermMini-Project\Objects2Multiple\obj\Debug\Objects2Multiple.pdb
